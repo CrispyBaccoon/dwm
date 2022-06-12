@@ -213,6 +213,7 @@ static void showhide(Client *c);
 static void sigchld(int unused);
 static void spawn(const Arg *arg);
 static void spawnbar();
+static void spawnautostart();
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void tile(Monitor *);
@@ -1689,6 +1690,7 @@ setup(void)
 	grabkeys();
 	focus(NULL);
 	spawnbar();
+ spawnautostart();
 }
 
 
@@ -1752,6 +1754,13 @@ spawnbar()
 {
 	if (*altbarcmd)
 		system(altbarcmd);
+}
+
+void
+spawnautostart()
+{
+	if (*autostartcmd)
+		system(autostartcmd);
 }
 
 void
